@@ -1,17 +1,33 @@
 fileFormatVersion: 2
 guid: f215fffc76cdb7a48972ca74c656b7ed
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Knight-Walk-Sheet_0
-    21300002: Knight-Walk-Sheet_1
-    21300004: Knight-Walk-Sheet_2
-    21300006: Knight-Walk-Sheet_3
-    21300008: Knight-Walk-Sheet_4
-    21300010: Knight-Walk-Sheet_5
-    21300012: Knight-Walk-Sheet_6
-    21300014: Knight-Walk-Sheet_7
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Knight-Walk-Sheet_0
+  - first:
+      213: 21300002
+    second: Knight-Walk-Sheet_1
+  - first:
+      213: 21300004
+    second: Knight-Walk-Sheet_2
+  - first:
+      213: 21300006
+    second: Knight-Walk-Sheet_3
+  - first:
+      213: 21300008
+    second: Knight-Walk-Sheet_4
+  - first:
+      213: 21300010
+    second: Knight-Walk-Sheet_5
+  - first:
+      213: 21300012
+    second: Knight-Walk-Sheet_6
+  - first:
+      213: 21300014
+    second: Knight-Walk-Sheet_7
   externalObjects: {}
-  serializedVersion: 9
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -66,7 +82,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -77,7 +93,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -88,7 +105,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -99,6 +117,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -118,6 +137,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 75031181307714e4cb3ccd475756bfe4
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -138,6 +158,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5eeb8a873ccc79141b1cfd21e714df70
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -158,6 +179,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ed2adf43f6ed74a498d8dc98549404db
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -178,6 +200,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 73764dbe09a0e9c4d81904a21f99fb2c
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -198,6 +221,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 375176263869e2b4ca89fe23f2d2ab8a
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -218,6 +242,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 40622615e468beb4a8685316f65ba996
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -238,6 +263,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d4ba5edada8e40e49a419b744919139c
+      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -258,6 +284,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6f9dc2eaa185695458d7acaea39739ea
+      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -266,10 +293,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5afa61e0d5eb94449829b2ace08691ed
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
