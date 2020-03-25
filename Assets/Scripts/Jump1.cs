@@ -23,11 +23,14 @@ public class Jump1 : MonoBehaviour
     [SerializeField]
     private float jumpForce;
 
+    public Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class Jump1 : MonoBehaviour
     void Update()
     {
         HandleInput();
+        
     }
     void FixedUpdate()
     {
@@ -51,16 +55,27 @@ public class Jump1 : MonoBehaviour
             isGrounded = false;
             myRigidbody.AddForce(new Vector2(0, jumpForce));
         }
+        if(isGrounded == true){
+            animator.SetBool("isJumping", false);
+        }
+        if(isGrounded == false){
+            animator.SetBool("isJumping", true);
+        }
     }
     private void HandleInput()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
             jump = true;
+            //animator.SetBool("isJumping", true);
         }
     }
     private void ResetValues(){
         jump = false;
+    }
+    public void OnLanding()
+    {
+        animator.SetBool("isJumping", false);
     }
 
     private bool IsGrounded(){
