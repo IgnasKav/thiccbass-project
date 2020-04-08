@@ -89,8 +89,11 @@ public class CharacterController2D : MonoBehaviour
                 }
             }
 
-            Vector3 targetVelocity = new Vector2(move * 10f, rigidbody2D.velocity.y);
-            rigidbody2D.velocity = Vector3.SmoothDamp(rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+            if (!crouch)
+            {
+                Vector3 targetVelocity = new Vector2(move * 10f, rigidbody2D.velocity.y);
+                rigidbody2D.velocity = Vector3.SmoothDamp(rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+            }
 
             if (move > 0 && !m_FacingRight)
             {
