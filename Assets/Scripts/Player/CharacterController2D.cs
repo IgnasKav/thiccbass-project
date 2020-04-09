@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float m_JumpForce = 1100f;                         
-    [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;    
+    [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = 0.99f;    
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f; 
     [SerializeField] private bool m_AirControl = false;                         
     [SerializeField] private LayerMask m_WhatIsGround;                         
