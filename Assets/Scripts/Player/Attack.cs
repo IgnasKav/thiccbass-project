@@ -16,13 +16,10 @@ public class PlayerCombat : MonoBehaviour
     
     void Update()
     {
-        if(Time.time >= nextAttackTime)
+        if(Time.time >= nextAttackTime && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
+            Attack();
+            nextAttackTime = Time.time + 1f / attackRate;
         }
     }
     void Attack()
