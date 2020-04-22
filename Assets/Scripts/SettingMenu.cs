@@ -25,7 +25,11 @@ public class SettingMenu : MonoBehaviour
         for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + "x" + resolutions[i].height;
-            options.Add(option);
+
+            if (resolutions[i].width % 640 == 0)
+            {
+                options.Add(option);
+            }
 
             if (resolutions[i].width == Screen.width &&
                 resolutions[i].height == Screen.height)

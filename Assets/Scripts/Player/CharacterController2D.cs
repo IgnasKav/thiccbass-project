@@ -40,11 +40,10 @@ public class CharacterController2D : MonoBehaviour
     private void FixedUpdate()
     {
         bool grounded = IsGrounded();
-        Debug.Log(grounded);
     }
 
     public bool IsGrounded() {
-        float extraHeight = 1f;
+        float extraHeight = 0.1f;
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, extraHeight, m_WhatIsGround);
 
         return raycastHit.collider != null;
@@ -60,7 +59,6 @@ public class CharacterController2D : MonoBehaviour
                 crouch = true;
             }
         }
-
         if (IsGrounded() || m_AirControl)
         {
 
@@ -88,7 +86,7 @@ public class CharacterController2D : MonoBehaviour
                     OnCrouchEvent.Invoke(false);
                 }
             }
-
+            
             Vector3 targetVelocity = new Vector2(move * 10f, rigidbody2D.velocity.y);
             rigidbody2D.velocity = Vector3.SmoothDamp(rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
@@ -106,12 +104,18 @@ public class CharacterController2D : MonoBehaviour
             rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
     }
+    public void StopMovement(bool active)
+    {
+        if (active)
+            rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
+        if (!active)
+            rigidbody2D.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+    }
 
 
     private void Flip()
     {
         m_FacingRight = !m_FacingRight;
-        
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;

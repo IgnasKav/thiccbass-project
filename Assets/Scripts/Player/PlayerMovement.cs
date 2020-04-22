@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         myAnimator.SetFloat("speed", Mathf.Abs(horizontalMove));
+        myAnimator.SetBool("isJumping", !controller.IsGrounded());
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -52,8 +53,9 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        bool attack = this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_attack");
+        controller.StopMovement(attack);
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-        myAnimator.SetBool("isJumping", !controller.IsGrounded());
         jump = false;
     }
 }
