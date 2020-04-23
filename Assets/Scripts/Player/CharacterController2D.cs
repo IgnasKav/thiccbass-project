@@ -1,22 +1,32 @@
+using System;
+using System.Collections;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
-    [SerializeField] private float m_JumpForce = 1100f;                         
-    [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = 0.99f;    
+    public PlayerMovement movement;
+
+    [SerializeField] private float m_JumpForce = 1100f;
+    [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = 0.0f;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f; 
     [SerializeField] private bool m_AirControl = false;                         
     [SerializeField] private LayerMask m_WhatIsGround;                         
     [SerializeField] private Transform m_CeilingCheck;                          
     [SerializeField] private Collider2D m_CrouchDisableCollider;                
 
-    const float k_CeilingRadius = .2f; 
+    const float k_CeilingRadius = .2f;
     private Rigidbody2D rigidbody2D;
+    private Animator myAnimator;
     private BoxCollider2D boxCollider2D;
     private bool m_FacingRight = true; 
     private Vector3 m_Velocity = Vector3.zero;
-
+    private float SlideTime = 0.5f;
+    public float slideTimeLeft = 0.0f;
+    public bool isSliding = false;
+    public bool stop = false;
+    
     [Header("Events")]
     [Space]
 
@@ -36,6 +46,28 @@ public class CharacterController2D : MonoBehaviour
         if (OnCrouchEvent == null)
             OnCrouchEvent = new BoolEvent();
     }
+    public void AttemptToSlide()
+    {
+        isSliding = true;
+        slideTimeLeft = SlideTime;
+    }
+
+    public void CheckSlide()
+    {
+        if (isSliding)
+        {
+            if (slideTimeLeft > 0.0f)
+            {
+                slideTimeLeft -= Time.deltaTime;
+            }
+            if(slideTimeLeft <= 0.0f)
+            {
+                isSliding = false;
+                stop = true;
+            }
+            stop = false;
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -48,7 +80,6 @@ public class CharacterController2D : MonoBehaviour
 
         return raycastHit.collider != null;
     }
-
 
     public void Move(float move, bool crouch, bool jump)
     {
@@ -69,8 +100,6 @@ public class CharacterController2D : MonoBehaviour
                     m_wasCrouching = true;
                     OnCrouchEvent.Invoke(true);
                 }
-
-                move *= m_CrouchSpeed;
 
                 if (m_CrouchDisableCollider != null)
                     m_CrouchDisableCollider.enabled = false;
@@ -104,6 +133,7 @@ public class CharacterController2D : MonoBehaviour
             rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
     }
+
     public void StopMovement(bool active)
     {
         if (active)

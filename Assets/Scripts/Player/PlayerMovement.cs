@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
+    bool isSliding = false;
 
     void Start()
     {
@@ -30,15 +31,18 @@ public class PlayerMovement : MonoBehaviour
             jump = true;
             myAnimator.SetBool("isJumping", true);
         }
-
+        controller.CheckSlide();
+        myAnimator.SetBool("isSliding", controller.isSliding);
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
-        } else if (Input.GetButtonUp("Crouch"))
+        }
+        else if (Input.GetButtonUp("Crouch"))
         {
+            controller.AttemptToSlide();
+            myAnimator.SetBool("isSliding", controller.isSliding);
             crouch = false;
         }
-
     }
     
     public void OnLanding()
@@ -55,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool attack = this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_attack");
         controller.StopMovement(attack);
+        controller.StopMovement(controller.stop);
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
     }
