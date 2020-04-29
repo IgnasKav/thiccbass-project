@@ -34,7 +34,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
+<<<<<<< Updated upstream
         } else if (Input.GetButtonUp("Crouch"))
+=======
+            controller.isSliding = false;
+            myAnimator.SetBool("isSliding", controller.isSliding);
+        }
+        else if (Input.GetButtonUp("Crouch"))
+>>>>>>> Stashed changes
         {
             crouch = false;
         }
