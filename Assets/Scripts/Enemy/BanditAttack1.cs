@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BanditAttack : MonoBehaviour
+public class BanditAttack1 : MonoBehaviour
 {
    
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.name.Equals("Warrior"))
         {
-            Bandit1.isAttacking = true;
+            Bandit2.isAttacking = true;
         }
     }
     void OnTriggerExit2D(Collider2D col)
     {
         if(col.gameObject.name.Equals("Warrior"))
         {
-            Bandit1.isAttacking = false;
+            Bandit2.isAttacking = false;
         }
     }
 }
