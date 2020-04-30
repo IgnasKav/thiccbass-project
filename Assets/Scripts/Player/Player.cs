@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
+    public Animator animator;
 
     public HealthBar1 healthBar;
 
@@ -19,8 +20,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage) {
+    public void TakeDamage(int damage) {
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
+        animator.SetTrigger("hurt");
+
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        animator.SetBool("isDead", true);
+        Debug.Log("we died...");
     }
 }
