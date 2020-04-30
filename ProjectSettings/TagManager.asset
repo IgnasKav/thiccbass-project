@@ -39,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: ForestBackground
+    uniqueID: 1966200015
+    locked: 0
+  - name: undergroundgrass
+    uniqueID: 745641393
+    locked: 0
   - name: Background0
     uniqueID: 284826069
     locked: 0
