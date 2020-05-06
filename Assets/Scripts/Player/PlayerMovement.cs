@@ -7,9 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController2D controller;
     private Animator myAnimator;
-    public float runSpeed;
-    public float boostTimer;
-    public bool boosting;
+    public float runSpeed = 50f;
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
@@ -17,9 +15,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>();
-        runSpeed = 50;
-        boostTimer = 0;
-        boosting = false;
     }
 
     // Update is called once per frame
@@ -49,17 +44,6 @@ public class PlayerMovement : MonoBehaviour
 >>>>>>> Stashed changes
         {
             crouch = false;
-        }
-
-        if (boosting)
-        {
-            boostTimer += Time.deltaTime;
-            if (boostTimer >= 3)
-            {
-                runSpeed = 50;
-                boostTimer = 0;
-                boosting = false;
-            }
         }
 
     }
