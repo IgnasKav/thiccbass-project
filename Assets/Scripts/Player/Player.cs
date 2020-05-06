@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public HealthBar1 healthBar;
 
     void Start() {
+        healthBar.setHealth(maxHealth);
         currentHealth = maxHealth;
     }
 
