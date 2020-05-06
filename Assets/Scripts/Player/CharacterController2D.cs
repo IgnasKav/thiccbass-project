@@ -1,8 +1,5 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections;
-using System.Collections.Generic;
 
 public class CharacterController2D : MonoBehaviour
 {
