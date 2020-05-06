@@ -52,7 +52,6 @@ public class Bandit2 : MonoBehaviour
         
         if(isAttacking && player.currentHealth > 0)
         {
-            Debug.Log(player.currentHealth);
             anim.SetBool("isAttacking", true);
         }
         if(isAttacking == false)
