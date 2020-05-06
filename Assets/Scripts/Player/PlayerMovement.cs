@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
+    public float boostTimer = 0;
+    public bool boosting = false;
 
     void Start()
     {
@@ -38,7 +40,16 @@ public class PlayerMovement : MonoBehaviour
         {
             crouch = false;
         }
-
+        if (boosting)
+        {
+            boostTimer += Time.deltaTime;
+            if (boostTimer >= 3)
+            {
+                runSpeed = 50;
+                boostTimer = 0;
+                boosting = false;
+            }
+        }
     }
     
     public void OnLanding()

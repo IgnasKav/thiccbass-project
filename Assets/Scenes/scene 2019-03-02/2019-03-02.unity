@@ -587,6 +587,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8feff813d8d7647b9a63bc7279db1a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumableDrop:
+  - {fileID: 0}
+  - {fileID: 0}
   animator: {fileID: 1047873352}
   maxHealth: 100
 --- !u!95 &1047873352
