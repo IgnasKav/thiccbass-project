@@ -890,7 +890,6 @@ GameObject:
   - component: {fileID: 1191908361}
   - component: {fileID: 1191908368}
   - component: {fileID: 1191908362}
-  - component: {fileID: 1191908369}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Untagged
@@ -1124,24 +1123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17123466af37f4d19b1d583642732a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1191908369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191908359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b78eaf7790194c29bd800bf74a2750b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   animator: {fileID: 1191908367}
   attackPoint: {fileID: 489609308}
-  attackRange: 1.1
+  attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 512
   attackDamage: 40
   attackRate: 2
 --- !u!1 &1242476593
