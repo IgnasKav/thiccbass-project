@@ -11,17 +11,30 @@ public class HealthOnPickup : MonoBehaviour
     void Awake()
     {
         playerHealth = FindObjectOfType<Player>();
+        StartCoroutine("floatAnimation");
     }
     //Paimamas consumable
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (playerHealth.currentHealth < playerHealth.maxHealth)
+        if (collider.gameObject.tag == "Player" && playerHealth.currentHealth < playerHealth.maxHealth)
         {
-            int health = 0;
-            health = playerHealth.currentHealth + healthBonus;
-            playerHealth.currentHealth = health;
-            playerHealth.healthBar.setHealth(health);
-            Destroy(gameObject);
+            playerHealth.currentHealth += healthBonus;
+            playerHealth.healthBar.setHealth(playerHealth.currentHealth);
+            Destroy(gameObject.transform.parent.gameObject);
         }
+    }
+
+    IEnumerator floatAnimation()
+    {
+        float offset = 0.15f;
+        transform.parent.gameObject.transform.position += new Vector3(0, offset / 2, 0);
+        yield return new WaitForSeconds(0.15f);
+        transform.parent.gameObject.transform.position += new Vector3(0, offset, 0);
+        yield return new WaitForSeconds(0.15f);
+        transform.parent.gameObject.transform.position += new Vector3(0, -offset / 2, 0);
+        yield return new WaitForSeconds(0.15f);
+        transform.parent.gameObject.transform.position += new Vector3(0, -offset, 0);
+        yield return new WaitForSeconds(0.15f);
+        yield return StartCoroutine("floatAnimation");
     }
 }

@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         this.enabled = false;
 
         random = Random.Range(0, consumableDrop.Length);
-        Instantiate(consumableDrop[random], new Vector3(transform.position.x, transform.position.y + 1, 0), Quaternion.identity);
+        Instantiate(consumableDrop[random], new Vector3(transform.position.x, transform.position.y + 0.5f , 0), Quaternion.identity);
         Destroy(this.gameObject);
     }
 }
