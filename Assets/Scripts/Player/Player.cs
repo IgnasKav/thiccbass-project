@@ -33,6 +33,5 @@ public class Player : MonoBehaviour
     void Die()
     {
         animator.SetBool("isDead", true);
-        Debug.Log("we died...");
     }
 }
