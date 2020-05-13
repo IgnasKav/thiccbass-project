@@ -14,12 +14,6 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            TakeDamage(10);
-        }
-    }
-
     public void TakeDamage(int damage) {
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
