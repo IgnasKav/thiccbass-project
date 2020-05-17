@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - GM
+  - Checkpoint
+  - NewGameButton
   layers:
   - Default
   - TransparentFX
