@@ -20,7 +20,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     #region Private Variables
 
-    private Animator anim;
+    public Animator anim;
     private float distance;
     private bool attackMode;
     private bool cooling;
