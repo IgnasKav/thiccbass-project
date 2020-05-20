@@ -9,7 +9,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private bool m_AirControl = false;                         
     [SerializeField] private LayerMask m_WhatIsGround;                       
     [SerializeField] private Collider2D m_CrouchDisableCollider;
-    [SerializeField] private Transform healthbarCanvas;     
+    [SerializeField] private Transform healthbarCanvas;
 
     const float k_CeilingRadius = .2f; 
     private Rigidbody2D rigidbody2D;
@@ -43,7 +43,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
     public bool IsGrounded() {
-        float extraHeight = 0.1f;
+        float extraHeight = 0.65f;
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, extraHeight, m_WhatIsGround);
 
         return raycastHit.collider != null;

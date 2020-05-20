@@ -29,10 +29,6 @@ public class GameMaster : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            Vector2 position;
-            position.x = -8f;
-            position.y = 0.55f;
-            lastCheckPointPosition = position;
         }
     }
 }
