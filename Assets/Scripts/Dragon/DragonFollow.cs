@@ -4,15 +4,40 @@ using UnityEngine;
 
 public class DragonFollow : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Dragon enemyParent;
+    private bool inRange;
+    private Animator anim;
+
+    void Awake()
     {
-        
+        enemyParent = GetComponentInParent<Dragon>();
+        anim = GetComponentInParent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update() {
+        if (inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Attack")) {
+            enemyParent.Flip();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D trig)
     {
-        
+        if (trig.gameObject.CompareTag("Player"))
+        {
+            enemyParent.moveSpeed *= 2;
+            inRange = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D trig) {
+        if (trig.gameObject.CompareTag("Player"))
+        {
+            enemyParent.moveSpeed /= 2;
+            enemyParent.TriggerCooling();
+            inRange = false;
+            gameObject.SetActive(false);
+            enemyParent.triggerArea.SetActive(true);
+            enemyParent.inRange = false;
+        }
     }
 }
