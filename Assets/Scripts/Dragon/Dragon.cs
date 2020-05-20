@@ -169,10 +169,10 @@ public class Dragon : MonoBehaviour
         Vector3 rotation = transform.eulerAngles;
         if (transform.position.x < target.position.x)
         {
-            rotation.y = 180;
+            rotation.y = 0;
         }
         else {
-            rotation.y = 0;
+            rotation.y = 180;
         }
 
         transform.eulerAngles = rotation;
