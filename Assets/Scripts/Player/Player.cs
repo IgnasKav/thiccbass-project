@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
+        Debug.Log(data.position[0]);
 
         Vector2 position;
         position.x = data.position[0] - 2;
