@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Skeleton
   - Dragon
+  - GM
+  - Checkpoint
+  - NewGameButton
   layers:
   - Default
   - TransparentFX

@@ -435,6 +435,7 @@ GameObject:
   - component: {fileID: 7913346670714773852}
   - component: {fileID: 7913346670714773853}
   - component: {fileID: 8902322476866210755}
+  - component: {fileID: 1728185701538674118}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Player
@@ -672,6 +673,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7913346670714773840}
   attackRate: 2
+--- !u!114 &1728185701538674118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913346670714773855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d464e51571ce474aa52eb90e0168ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7913346670842317886
 GameObject:
   m_ObjectHideFlags: 0
