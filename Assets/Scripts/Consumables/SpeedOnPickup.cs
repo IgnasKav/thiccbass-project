@@ -13,8 +13,7 @@ public class SpeedOnPickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player") {
-            GameObject Warrior = GameObject.Find("Warrior");
-            PlayerMovement playerScript = Warrior.GetComponent<PlayerMovement>();
+            PlayerMovement playerScript = collider.gameObject.GetComponent<PlayerMovement>();
             playerScript.boosting = true;
             playerScript.runSpeed = speedBoost;
             Destroy(gameObject.transform.parent.gameObject);

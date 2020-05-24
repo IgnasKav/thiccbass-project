@@ -7,9 +7,9 @@ public class CharacterController2D : MonoBehaviour
     [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = 0.99f;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f; 
     [SerializeField] private bool m_AirControl = false;                         
-    [SerializeField] private LayerMask m_WhatIsGround;                         
-    [SerializeField] private Transform m_CeilingCheck;                          
-    [SerializeField] private Collider2D m_CrouchDisableCollider;                
+    [SerializeField] private LayerMask m_WhatIsGround;                       
+    [SerializeField] private Collider2D m_CrouchDisableCollider;
+    [SerializeField] private Transform healthbarCanvas;
 
     const float k_CeilingRadius = .2f; 
     private Rigidbody2D rigidbody2D;
@@ -43,7 +43,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
     public bool IsGrounded() {
-        float extraHeight = 0.1f;
+        float extraHeight = 0.65f;
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, extraHeight, m_WhatIsGround);
 
         return raycastHit.collider != null;
@@ -111,7 +111,10 @@ public class CharacterController2D : MonoBehaviour
     {
         m_FacingRight = !m_FacingRight;
         Vector3 theScale = transform.localScale;
+        Vector3 healthBarScale = healthbarCanvas.localScale;
         theScale.x *= -1;
+        healthBarScale.x *= -1;
+        healthbarCanvas.localScale = healthBarScale;
         transform.localScale = theScale;
     }
 }
