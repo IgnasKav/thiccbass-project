@@ -46,6 +46,9 @@ public class Dragon : MonoBehaviour
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Hurt") || anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Die")) {
             return;
         }
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("SmallDragonHurt") || anim.GetCurrentAnimatorStateInfo(0).IsName("SmallDragonDeath")) {
+            return;
+        }
         if (inRange)
         {
             EnemyLogic();
@@ -60,7 +63,7 @@ public class Dragon : MonoBehaviour
                 Move();
             }
 
-            if (!InsideofLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Attack"))
+            if (!InsideofLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("SmallDragonAttack"))
             {
                 SelectTarget();
             }
@@ -92,7 +95,7 @@ public class Dragon : MonoBehaviour
 
     void Move() {
         anim.SetBool("CanWalk", true);
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Attack")) {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("SmallDragonAttack")) {
             Vector2 targetPosistion = new Vector2(target.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetPosistion, moveSpeed * Time.deltaTime);
             currentSpeed = moveSpeed;
