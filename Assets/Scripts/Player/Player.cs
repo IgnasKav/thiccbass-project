@@ -6,6 +6,7 @@ using System.IO;
 public class Player : MonoBehaviour
 {
     public PlayerPosition playerPosition;
+    public PlayerSounds _playerSounds;
     public bool isDead = false;
 
     public int maxHealth = 100;
@@ -30,6 +31,8 @@ public class Player : MonoBehaviour
     }
 
     public void TakeDamage(int damage) {
+        _playerSounds = FindObjectOfType<PlayerSounds>();
+        _playerSounds.Grunt();
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
         animator.SetTrigger("hurt");
@@ -41,6 +44,8 @@ public class Player : MonoBehaviour
     }
     void Die()
     {
+        _playerSounds = FindObjectOfType<PlayerSounds>();
+        _playerSounds.Death();
         animator.SetBool("isDead", true);
         isDead = true;
         Respawn();
