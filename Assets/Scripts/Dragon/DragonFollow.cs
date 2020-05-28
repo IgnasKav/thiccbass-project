@@ -15,7 +15,7 @@ public class DragonFollow : MonoBehaviour
     }
 
     void Update() {
-        if (inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Attack")) {
+        if (inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("SmallDragonAttack")) {
             enemyParent.Flip();
         }
     }

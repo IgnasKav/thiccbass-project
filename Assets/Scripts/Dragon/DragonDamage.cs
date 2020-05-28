@@ -8,7 +8,10 @@ public class DragonDamage : MonoBehaviour
     public Animator anim;
 
     void OnTriggerEnter2D(Collider2D target) {
-        if(target.gameObject.CompareTag("Player") && anim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Attack")) {
+        if(target.gameObject.CompareTag("Player")) {
+            target.gameObject.GetComponent<Player>().TakeDamage(attackDamage);
+        }
+        if(target.gameObject.CompareTag("Player")) {
             target.gameObject.GetComponent<Player>().TakeDamage(attackDamage);
         }
     }

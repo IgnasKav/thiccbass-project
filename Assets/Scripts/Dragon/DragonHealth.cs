@@ -19,14 +19,26 @@ public class DragonHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Hurt")) {
-          if(currentHealth <= 0)
+        if(!animator.GetCurrentAnimatorStateInfo(0).IsName("SmallDragonHurt") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Dragon_Hurt"))
+        {
+            currentHealth -= damage;
+            //animator.SetTrigger("hurt");
+            if(currentHealth <= 0)
             {
                 animator.SetBool("isDead", true);
             }
-
-            currentHealth -= damage;
-            animator.SetTrigger("hurt");  
+            if(currentHealth <= 50)
+            {
+                animator.SetTrigger("StageTwo");
+            }
+            if(currentHealth > 50)
+            {
+                animator.SetTrigger("hurt");
+            }
+            if(currentHealth <= 39)
+            {
+                animator.SetTrigger("hurt1");
+            }
         }
     }
     void onDeath()
