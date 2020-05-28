@@ -45,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: WALL
+    uniqueID: 1828058193
+    locked: 0
   - name: ForestBackground
     uniqueID: 1966200015
     locked: 0
