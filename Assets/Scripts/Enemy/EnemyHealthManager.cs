@@ -19,15 +19,16 @@ public class EnemyHealthManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy1_Hurt")) {
-          if(currentHealth <= 0)
+        if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy1_Hurt") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy1_Die")) {
+            if(currentHealth <= 0)
             {
                 animator.SetBool("isDead", true);
             }
             currentHealth -= damage;
-            animator.SetTrigger("hurt");  
+            animator.SetTrigger("hurt");
         }
     }
+
     void onDeath()
     {
         random = Random.Range(0, consumableDrop.Length);
