@@ -34,7 +34,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Awake()
     {
         SelectTarget();
-        chaseSpeed = moveSpeed * 2;
+        chaseSpeed = moveSpeed * 1.5f;
         currentSpeed = 0;
         defaultCoolDown = attackCooldown;
         timer = attackCooldown;

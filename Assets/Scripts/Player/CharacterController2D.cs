@@ -7,8 +7,7 @@ public class CharacterController2D : MonoBehaviour
     [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = 0.99f;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f; 
     [SerializeField] private bool m_AirControl = false;                         
-    [SerializeField] private LayerMask m_WhatIsGround;                       
-    [SerializeField] private Collider2D m_CrouchDisableCollider;
+    [SerializeField] private LayerMask m_WhatIsGround;
     [SerializeField] private Transform healthbarCanvas;
 
     const float k_CeilingRadius = .2f; 
@@ -65,15 +64,9 @@ public class CharacterController2D : MonoBehaviour
                 }
 
                 move *= m_CrouchSpeed;
-
-                if (m_CrouchDisableCollider != null)
-                    m_CrouchDisableCollider.enabled = false;
             }
             else
             {
-                if (m_CrouchDisableCollider != null)
-                    m_CrouchDisableCollider.enabled = true;
-
                 if (m_wasCrouching)
                 {
                     m_wasCrouching = false;

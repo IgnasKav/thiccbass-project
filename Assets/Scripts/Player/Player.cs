@@ -14,8 +14,12 @@ public class Player : MonoBehaviour
 
     public HealthBar1 healthBar;
 
+    private float damgeDellay = 0f;
+    private GameObject healthBarObject;
+
 
     void Start() {
+        healthBarObject = healthBar.GetHealthBarObject();
         string path = Application.persistentDataPath + "/game_save.txt";
         if (!File.Exists(path))
         {
@@ -30,15 +34,40 @@ public class Player : MonoBehaviour
     }
 
     public void TakeDamage(int damage) {
-        currentHealth -= damage;
-        healthBar.setHealth(currentHealth);
-        animator.SetTrigger("hurt");
+        if(Time.time >= damgeDellay) {
+            StartCoroutine("ShowHealth");
+            currentHealth -= damage;
+            healthBar.setHealth(currentHealth);
+            animator.SetTrigger("hurt");
+            damgeDellay = Time.time + 1f / 2f;
+        }
 
         if(currentHealth <= 0)
         {
             Die();
         }
     }
+
+    public void TakeHealth(int healthAmmount) {
+        if((currentHealth + healthAmmount) <= maxHealth) {
+            StartCoroutine("ShowHealth");
+            currentHealth += healthAmmount;
+        }
+        else {
+            StartCoroutine("ShowHealth");
+            currentHealth = maxHealth;
+        }
+        
+        healthBar.setHealth(currentHealth);
+    }
+
+    private IEnumerator ShowHealth() {
+        healthBarObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        healthBarObject.SetActive(false);
+        yield break;
+    }
+
     void Die()
     {
         animator.SetBool("isDead", true);
