@@ -24,6 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float distance;
     private bool attackMode;
     private bool cooling;
+    private bool waitingForPlayer = false;
     private float timer;
     private float defaultCoolDown;
     private Transform prevPosition;
@@ -60,8 +61,16 @@ public class EnemyBehaviour : MonoBehaviour
                 Move();
             }
 
+            if(!InsideofLimits() && inRange && !TargetInPatrolArea()) {//checks if enemy is already at his position limit and still chases player
+                waitingForPlayer = true; //if true enemy waits for player to comeback in his patrol area
+            }
+            else {
+                waitingForPlayer = false;
+            }
+
             if (!InsideofLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy1_Attack"))
             {
+                
                 SelectTarget();
             }
         }
@@ -91,13 +100,14 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     void Move() {
-        anim.SetBool("CanWalk", true);
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy1_Attack")) {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy1_Attack") && !waitingForPlayer) {
+            anim.SetBool("CanWalk", true);
             Vector2 targetPosistion = new Vector2(target.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetPosistion, moveSpeed * Time.deltaTime);
             currentSpeed = moveSpeed;
         } else {
             currentSpeed = 0;
+            anim.SetBool("CanWalk", false);
         }
     }
 
@@ -143,6 +153,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     private bool InsideofLimits() {
         return transform.position.x > leftLimit.position.x && transform.position.x < rightLimit.position.x;
+    }
+
+    private bool TargetInPatrolArea() {
+        return target.position.x > leftLimit.position.x && target.position.x < rightLimit.position.x;
     }
 
     public void SelectTarget() {
