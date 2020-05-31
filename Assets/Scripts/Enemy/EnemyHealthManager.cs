@@ -11,10 +11,12 @@ public class EnemyHealthManager : MonoBehaviour
     public Animator animator;
     public int maxHealth = 100;
     int currentHealth;
+    public LevelController gm;
 
     void Start()
     {
         currentHealth = maxHealth;
+        gm.AddEnemy();
     }
 
     public void TakeDamage(int damage)
@@ -31,6 +33,7 @@ public class EnemyHealthManager : MonoBehaviour
 
     void onDeath()
     {
+        gm.RemoveEnemy();
         random = Random.Range(0, consumableDrop.Length);
         Instantiate(consumableDrop[random], new Vector3(transform.position.x, transform.position.y - 3f, 0), Quaternion.identity);
         Destroy(this.gameObject);
