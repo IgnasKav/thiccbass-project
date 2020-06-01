@@ -9,7 +9,7 @@ public class DragonHealth : MonoBehaviour
     public GameObject[] consumableDrop;
     int random;
     public Animator animator;
-    public int maxHealth = 100;
+    public int maxHealth = 200;
     int currentHealth;
 
     void Start()
@@ -27,15 +27,15 @@ public class DragonHealth : MonoBehaviour
             {
                 animator.SetBool("isDead", true);
             }
-            if(currentHealth <= 50)
+            if(currentHealth <= 100)
             {
                 animator.SetTrigger("StageTwo");
             }
-            if(currentHealth > 50)
+            if(currentHealth > 100)
             {
                 animator.SetTrigger("hurt");
             }
-            if(currentHealth <= 39)
+            if(currentHealth <= 79)
             {
                 animator.SetTrigger("hurt1");
             }
