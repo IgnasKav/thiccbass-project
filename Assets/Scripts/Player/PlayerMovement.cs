@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        bool attack = this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_attack");
+        bool attack = myAnimator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttack1") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttack2") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttack3");
         controller.StopMovement(attack);
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;

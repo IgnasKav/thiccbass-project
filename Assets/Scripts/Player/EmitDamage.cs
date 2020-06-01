@@ -8,13 +8,14 @@ public class EmitDamage : MonoBehaviour
     public Animator anim;
 
     void OnTriggerEnter2D(Collider2D target) {
-        if(target.gameObject.CompareTag("Enemy") && anim.GetCurrentAnimatorStateInfo(0).IsName("Player_attack")) {
+        bool attacking = anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttack3");
+        if(target.gameObject.CompareTag("Enemy") && attacking) {
             target.gameObject.GetComponent<DamageReceiver>().onReceiveDamage(attackDamage);
         }
-        if(target.gameObject.CompareTag("Skeleton") && anim.GetCurrentAnimatorStateInfo(0).IsName("Player_attack")) {
+        if(target.gameObject.CompareTag("Skeleton") && attacking) {
             target.gameObject.GetComponent<DmgReceiver>().onReceiveDamage(attackDamage);
         }
-        if(target.gameObject.CompareTag("Dragon") && anim.GetCurrentAnimatorStateInfo(0).IsName("Player_attack")) {
+        if(target.gameObject.CompareTag("Dragon") && attacking) {
             target.gameObject.GetComponent<DragonDamageReceiver>().onReceiveDamage(attackDamage);
         }
     }

@@ -7,6 +7,7 @@ public class PlayerFollowing : MonoBehaviour
     private EnemyBehaviour enemyParent;
     private bool inRange;
     private Animator anim;
+    private float chaseMultiplier = 1.6f;
 
     void Awake()
     {
@@ -24,7 +25,7 @@ public class PlayerFollowing : MonoBehaviour
     {
         if (trig.gameObject.CompareTag("Player"))
         {
-            enemyParent.moveSpeed *= 2;
+            enemyParent.moveSpeed *= chaseMultiplier;
             inRange = true;
         }
     }
@@ -32,7 +33,7 @@ public class PlayerFollowing : MonoBehaviour
     void OnTriggerExit2D(Collider2D trig) {
         if (trig.gameObject.CompareTag("Player"))
         {
-            enemyParent.moveSpeed /= 2;
+            enemyParent.moveSpeed /= chaseMultiplier;
             enemyParent.TriggerCooling();
             inRange = false;
             gameObject.SetActive(false);

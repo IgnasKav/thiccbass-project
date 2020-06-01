@@ -18,8 +18,7 @@ public class HealthOnPickup : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player" && playerHealth.currentHealth < playerHealth.maxHealth)
         {
-            playerHealth.currentHealth += healthBonus;
-            playerHealth.healthBar.setHealth(playerHealth.currentHealth);
+            playerHealth.TakeHealth(healthBonus);
             Destroy(gameObject.transform.parent.gameObject);
         }
     }

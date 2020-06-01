@@ -21,4 +21,8 @@ public class HealthBar1 : MonoBehaviour
         slider.value = health;
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
+
+    public GameObject GetHealthBarObject() {
+        return this.gameObject;
+    }
 }
