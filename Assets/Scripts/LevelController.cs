@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public int enemyCount;
+    private int enemyCount;
 
     public void AddEnemy() {
         enemyCount++;
