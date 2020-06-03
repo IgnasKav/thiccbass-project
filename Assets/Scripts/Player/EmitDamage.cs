@@ -12,9 +12,6 @@ public class EmitDamage : MonoBehaviour
         if(target.gameObject.CompareTag("Enemy") && attacking) {
             target.gameObject.GetComponent<DamageReceiver>().onReceiveDamage(attackDamage);
         }
-        if(target.gameObject.CompareTag("Skeleton") && attacking) {
-            target.gameObject.GetComponent<DmgReceiver>().onReceiveDamage(attackDamage);
-        }
         if(target.gameObject.CompareTag("Dragon") && attacking) {
             target.gameObject.GetComponent<DragonDamageReceiver>().onReceiveDamage(attackDamage);
         }

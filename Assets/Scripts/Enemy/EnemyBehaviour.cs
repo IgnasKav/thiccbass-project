@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     public Transform rightLimit;
     [HideInInspector] public Transform target;
     [HideInInspector] public bool inRange;
+    public float initialRotation;
     public GameObject hotZone;
     public GameObject triggerArea;
     public ParticleSystem dust;
@@ -37,6 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
         SelectTarget();
         chaseSpeed = moveSpeed * 1.5f;
         currentSpeed = 0;
+        initialRotation = transform.eulerAngles.y;
         defaultCoolDown = attackCooldown;
         timer = attackCooldown;
         anim = GetComponent<Animator>();
@@ -183,10 +185,10 @@ public class EnemyBehaviour : MonoBehaviour
         Vector3 rotation = transform.eulerAngles;
         if (transform.position.x < target.position.x)
         {
-            rotation.y = 180;
+            rotation.y = initialRotation + 180;
         }
         else {
-            rotation.y = 0;
+            rotation.y = initialRotation;
         }
 
         transform.eulerAngles = rotation;

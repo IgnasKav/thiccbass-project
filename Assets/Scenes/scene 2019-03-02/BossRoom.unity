@@ -24929,7 +24929,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4742401314610912135, guid: b446be0ba07a2574d8dd0fd461281608, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b446be0ba07a2574d8dd0fd461281608, type: 3}
 --- !u!4 &980170174 stripped
 Transform:
@@ -27043,6 +27044,32 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1724741267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5136381410603230605, guid: b446be0ba07a2574d8dd0fd461281608,
+    type: 3}
+  m_PrefabInstance: {fileID: 980170173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1724741270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724741267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17123466af37f4d19b1d583642732a3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1724741277}
+  attackRate: 2
+--- !u!95 &1724741277 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5136381410603230594, guid: b446be0ba07a2574d8dd0fd461281608,
+    type: 3}
+  m_PrefabInstance: {fileID: 980170173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1726308857
 GameObject:
   m_ObjectHideFlags: 0

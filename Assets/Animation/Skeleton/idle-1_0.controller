@@ -163,7 +163,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skeleton_Hurt
+  m_Name: Enemy1_Hurt
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -317,7 +317,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skeleton_Attack
+  m_Name: Enemy1_Attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
