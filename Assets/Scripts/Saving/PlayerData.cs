@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class PlayerData
 {
-    public float[] position;
+    public int sceneNumeber;
 
-    public PlayerData(Player player)
+    public PlayerData(int number)
     {
-        position = new float[2];
-        position[0] = player.transform.position.x - 2;
-        position[1] = player.transform.position.y;
+        number = sceneNumeber = SceneManager.GetActiveScene().buildIndex;
     }
 }

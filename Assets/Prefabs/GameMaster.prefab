@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6589453930707537849}
   - component: {fileID: 6589453930707537848}
+  - component: {fileID: 1886487190424789799}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GM
@@ -45,3 +46,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastCheckPointPosition: {x: 0, y: 0}
   playerPosition: {fileID: 0}
+--- !u!114 &1886487190424789799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6589453930707537851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd2c575c78a12347bdb9a14ccdf68e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCount: 0

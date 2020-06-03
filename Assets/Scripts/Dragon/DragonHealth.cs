@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 
 public class DragonHealth : MonoBehaviour
 {
+    public GameObject gameOver;
     public GameObject[] consumableDrop;
     int random;
     public Animator animator;
@@ -46,5 +47,7 @@ public class DragonHealth : MonoBehaviour
         random = Random.Range(0, consumableDrop.Length);
         Instantiate(consumableDrop[random], new Vector3(transform.position.x, transform.position.y - 3f, 0), Quaternion.identity);
         Destroy(this.gameObject);
+
+        gameOver.SetActive(true);
     }
 }

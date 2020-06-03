@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
     private float damgeDellay = 0f;
     private GameObject healthBarObject;
 
+    public LevelLoader levelLoader;
+
 
     void Start() {
         healthBarObject = healthBar.GetHealthBarObject();
@@ -28,7 +31,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            PlayerData data = SaveSystem.LoadPlayer();
+            int data = SaveSystem.LoadPlayer();
             currentHealth = maxHealth;
         }
     }
@@ -94,16 +97,17 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Checkpoint"))
         {
-            SaveSystem.SavePlayer(this);
+            SaveSystem.SavePlayer();
         }
     }
 
     //Load
     public void LoadPlayer()
     {
-        PlayerData data = SaveSystem.LoadPlayer();
+        int data = SaveSystem.LoadPlayer();
         currentHealth = maxHealth;
         healthBar.setHealth(currentHealth);
+        levelLoader.LoadNextLevel(data);
 
         playerPosition.Reload();
     }
