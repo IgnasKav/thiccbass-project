@@ -1,40 +1,41 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System;
+using System.ComponentModel;
 
 public static class SaveSystem
 {
-    public static void SavePlayer (Player player)
+    public static void SavePlayer ()
     {
-        BinaryFormatter formatter = new BinaryFormatter();
+        int data = SceneManager.GetActiveScene().buildIndex;
+
+        string line = $"{data}";
+
         string path = Application.persistentDataPath + "/game_save.txt";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        PlayerData data = new PlayerData(player);
-
-        formatter.Serialize(stream, data);
-
-        stream.Close();
+        using (StreamWriter outputFile = new StreamWriter(path))
+        {
+            outputFile.WriteLine(line);
+            UnityEngine.Debug.Log(line);
+        }
     }
 
-    public static PlayerData LoadPlayer()
+    public static int LoadPlayer()
     {
         string path = Application.persistentDataPath + "/game_save.txt";
-        if (File.Exists(path))
+        using (StreamReader sr = new StreamReader(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            string line;
+            int data = 0;
 
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
-
-            stream.Close();
+            while ((line = sr.ReadLine()) != null)
+            {
+                 data = Convert.ToInt32(line);
+                UnityEngine.Debug.Log(data);
+            }
 
             return data;
-        }
-        else
-        {
-            UnityEngine.Debug.Log("Save file not found in " + path);
-            return null;
         }
     }
 }

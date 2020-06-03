@@ -19,11 +19,7 @@ public class GameMaster : MonoBehaviour
             string path = Application.persistentDataPath + "/game_save.txt";
             if (File.Exists(path))
             {
-                PlayerData data = SaveSystem.LoadPlayer();
-                Vector2 position;
-                position.x = data.position[0] - 2;
-                position.y = data.position[1];
-                lastCheckPointPosition = position;
+                int data = SaveSystem.LoadPlayer();
             }
         }
         else

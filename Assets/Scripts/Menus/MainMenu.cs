@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System;
 
 public class MainMenu : MonoBehaviour
 {
+    public LevelLoader levelLoader;
+
     public void PlayGame()
     {
-        SceneManager.LoadScene("ForestLevel");
+        levelLoader.LoadNextLevel();
         string path = Application.persistentDataPath + "/game_save.txt";
         if (File.Exists(path))
         {
@@ -18,7 +22,20 @@ public class MainMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        SceneManager.LoadScene("ForestLevel");
+        string path = Application.persistentDataPath + "/game_save.txt";
+        using (StreamReader sr = new StreamReader(path))
+        {
+            string line;
+            int data = 0;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                data = Convert.ToInt32(line);
+            }
+
+            UnityEngine.Debug.Log(data);
+            levelLoader.LoadNextLevel(data);
+        }
     }
 
     public void QuitGame()
