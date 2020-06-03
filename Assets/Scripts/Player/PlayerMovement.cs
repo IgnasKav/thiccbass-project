@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public CharacterController2D controller;
+    public GameObject healthIndicator;
     private Animator myAnimator;
     public float runSpeed = 50f;
     float horizontalMove = 0f;
@@ -22,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         myAnimator.SetFloat("speed", Mathf.Abs(horizontalMove));
         myAnimator.SetBool("isJumping", !controller.IsGrounded());
@@ -42,12 +42,14 @@ public class PlayerMovement : MonoBehaviour
         }
         if (boosting)
         {
+            healthIndicator.SetActive(true);
             boostTimer += Time.deltaTime;
             if (boostTimer >= 3)
             {
                 runSpeed = 50;
                 boostTimer = 0;
                 boosting = false;
+                healthIndicator.SetActive(false);
             }
         }
     }

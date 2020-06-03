@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpeedOnPickup : MonoBehaviour
 {
-    public float speedBoost = 100f;
+    public float speedBoost = 50f;
 
     void Start() {
         StartCoroutine("floatAnimation");
