@@ -6,13 +6,17 @@ public class PlayerCombat : MonoBehaviour
 {
 
     public Animator animator;
+    public AudioClip attackAudio;
+
     public float attackRate;
     private float nextAttackTime = 0f;
     private float prevAttackTime;
     private int currentAttackIndex = 0;
     private CharacterController2D player;
+    private AudioSource audioScource;
 
     void Awake() {
+        audioScource = GetComponent<AudioSource>();
         player = GetComponent<CharacterController2D>();
     }
     
@@ -31,6 +35,7 @@ public class PlayerCombat : MonoBehaviour
                     nextAttackTime = currentTime + 1f / attackRate;
                 }
                 else { // start/continue with combo
+                    audioScource.PlayOneShot(attackAudio);
                     currentAttackIndex++;
                     animator.Play("PlayerAttack" + currentAttackIndex);
                     prevAttackTime = currentTime;
@@ -38,6 +43,7 @@ public class PlayerCombat : MonoBehaviour
                 }
             }
             else {
+                audioScource.PlayOneShot(attackAudio);
                 nextAttackTime = currentTime + 0.5f / attackRate;
                 animator.SetTrigger("attack");
             }

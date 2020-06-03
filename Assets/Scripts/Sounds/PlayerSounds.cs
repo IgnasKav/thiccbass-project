@@ -7,7 +7,6 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip footsteps;
     public AudioClip jump;
     public AudioClip slide;
-    public AudioClip attack;
     public AudioClip grunt;
     public AudioClip death;
     
@@ -28,11 +27,6 @@ public class PlayerSounds : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             audioScource.PlayOneShot(jump);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            audioScource.PlayOneShot(attack);
         }
     }
 
