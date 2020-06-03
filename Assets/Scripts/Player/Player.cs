@@ -29,8 +29,7 @@ public class Player : MonoBehaviour
         else
         {
             PlayerData data = SaveSystem.LoadPlayer();
-            currentHealth = data.health;
-            healthBar.setHealth(data.health);
+            currentHealth = maxHealth;
         }
     }
 
@@ -103,14 +102,9 @@ public class Player : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
-        Debug.Log(data.position[0]);
+        currentHealth = maxHealth;
+        healthBar.setHealth(currentHealth);
 
-        Vector2 position;
-        position.x = data.position[0] - 2;
-        position.y = data.position[1];
-        transform.position = position;
-
-        currentHealth = data.health;
-        healthBar.setHealth(data.health);
+        playerPosition.Reload();
     }
 }
