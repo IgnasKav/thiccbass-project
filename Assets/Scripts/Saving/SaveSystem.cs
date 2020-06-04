@@ -17,7 +17,6 @@ public static class SaveSystem
         using (StreamWriter outputFile = new StreamWriter(path))
         {
             outputFile.WriteLine(line);
-            UnityEngine.Debug.Log(line);
         }
     }
 
@@ -32,7 +31,6 @@ public static class SaveSystem
             while ((line = sr.ReadLine()) != null)
             {
                  data = Convert.ToInt32(line);
-                UnityEngine.Debug.Log(data);
             }
 
             return data;

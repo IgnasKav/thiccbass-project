@@ -6,7 +6,6 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public PlayerPosition playerPosition;
     public PlayerSounds _playerSounds;
     public bool isDead = false;
 
@@ -86,9 +85,7 @@ public class Player : MonoBehaviour
     {
         if (isDead)
         {
-            playerPosition.Reload();
-            currentHealth = maxHealth;
-            healthBar.setHealth(currentHealth);
+            LoadPlayer();
         }
     }
 
@@ -108,7 +105,5 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.setHealth(currentHealth);
         levelLoader.LoadNextLevel(data);
-
-        playerPosition.Reload();
     }
 }

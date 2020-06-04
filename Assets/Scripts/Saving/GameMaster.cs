@@ -7,8 +7,6 @@ using System.IO;
 public class GameMaster : MonoBehaviour
 {
     private static GameMaster instance;
-    public Vector2 lastCheckPointPosition;
-    public PlayerPosition playerPosition;
 
     void Awake()
     {
